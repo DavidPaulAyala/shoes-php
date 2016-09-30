@@ -21,7 +21,7 @@ _This website allows for shoe stores and brands to be created and linked to each
 * _USE shoes;_
 * _CREATE TABLE stores (id serial PRIMARY KEY, name VARCHAR(255));_
 * _CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR(255));_
-* _CREATE TABLE store_brand (id serial PRIMARY KEY, store_id int, brand_id int);_
+* _CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id int, brand_id int);_
 
 ## Technologies Used
 
