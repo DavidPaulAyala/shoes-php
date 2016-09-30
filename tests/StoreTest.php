@@ -15,7 +15,7 @@
     {
         protected function tearDown()
         {
-            // Store::deleteAll();
+            Store::deleteAll();
             // Brand::deleteAll();
         }
 
@@ -59,6 +59,57 @@
             //Assert
             $this->assertEquals($name, $result);
         }
+
+        function testSave()
+            {
+                //Arrange
+                $name = "DSW";
+                $test_store = new Store($name, $id=null);
+
+                //Act
+                $test_store->save();
+
+                //Assert
+                $result = Store::getAll();
+                $this->assertEquals($test_store, $result[0]);
+            }
+
+        function testGetAll()
+            {
+                //Arrange
+                $name = "DSW";
+                $test_store = new Store($name, $id=null);
+                $test_store->save();
+
+                $name2 = "Shoe City";
+                $test_store2 = new Store($name2, $id2=null);
+                $test_store2->save();
+
+                //Act
+                $result = Store::getAll();
+
+                //Assert
+                $this->assertEquals([$test_store, $test_store2], $result);
+            }
+
+        function testDeleteAll()
+            {
+                //Arrange
+                $name = "DSW";
+                $test_store = new Store($name, $id=null);
+                $test_store->save();
+
+                $name2 = "Water the lawn";
+                $test_store2 = new Store($name2, $id2=null);
+                $test_store2->save();
+
+                //Act
+                Store::deleteAll();
+
+                //Assert
+                $result = Store::getAll();
+                $this->assertEquals([], $result);
+            }
     }
 
 
