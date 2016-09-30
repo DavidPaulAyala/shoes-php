@@ -110,6 +110,63 @@
             $result = Store::getAll();
             $this->assertEquals([], $result);
         }
+
+        function testFindStudents()
+        {
+            //Arrange
+            $name = "DSW";
+            $test_store = new Store($name, $id=null);
+            $test_store->save();
+
+            $name2 = "Art";
+            $test_store2 = new Store($name2, $id2=null);
+            $test_store2->save();
+
+            //Act
+            $result = Store::find($test_store->getId());
+
+            //Assert
+            $this->assertEquals($test_store, $result);
+
+        }
+
+        function testUpdate()
+        {
+            //Arrange
+            $name = "DSW";
+            $test_store = new Store($name, $id=null);
+            $test_store->save();
+
+            $new_name = "Shoe City";
+
+            //Act
+            $test_store->update($new_name);
+
+            //Assert
+            $this->assertEquals ("Shoe City", $test_store->getStoreName());
+
+        }
+
+        function testDeleteStore()
+        {
+            //Arrange
+            $name = "DSW";
+            $test_store = new Store($name, $id=null);
+            $test_store->save();
+
+            $name2 = "Shoe City";
+            $test_store2 = new Store($name2, $id2=null);
+            $test_store2->save();
+
+            //Act
+
+            $test_store->delete();
+
+            //Assert
+
+            $this->assertEquals([$test_store2], Store::getAll());
+
+        }
     }
 
 
