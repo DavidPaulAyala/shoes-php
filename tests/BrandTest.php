@@ -99,7 +99,7 @@
             $test_brand = new Brand($name, $id=null);
             $test_brand->save();
 
-            $name2 = "Water the lawn";
+            $name2 = "Addidas";
             $test_brand2 = new Brand($name2, $id2=null);
             $test_brand2->save();
 
@@ -109,6 +109,25 @@
             //Assert
             $result = Brand::getAll();
             $this->assertEquals([], $result);
+        }
+
+        function testFindBrands()
+        {
+            //Arrange
+            $name = "Nike";
+            $test_brand = new Brand($name, $id=null);
+            $test_brand->save();
+
+            $name2 = "Addidas";
+            $test_brand2 = new Brand($name2, $id2=null);
+            $test_brand2->save();
+
+            //Act
+            $result = Brand::find($test_brand->getId());
+
+            //Assert
+            $this->assertEquals($test_brand, $result);
+
         }
     }
 

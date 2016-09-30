@@ -99,7 +99,7 @@
             $test_store = new Store($name, $id=null);
             $test_store->save();
 
-            $name2 = "Water the lawn";
+            $name2 = "Shoe City";
             $test_store2 = new Store($name2, $id2=null);
             $test_store2->save();
 
@@ -111,14 +111,14 @@
             $this->assertEquals([], $result);
         }
 
-        function testFindStudents()
+        function testFindStores()
         {
             //Arrange
             $name = "DSW";
             $test_store = new Store($name, $id=null);
             $test_store->save();
 
-            $name2 = "Art";
+            $name2 = "Shoe City";
             $test_store2 = new Store($name2, $id2=null);
             $test_store2->save();
 
