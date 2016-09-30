@@ -15,8 +15,8 @@
     {
         protected function tearDown()
         {
-            // Store::deleteAll();
-            // Brand::deleteAll();
+            Store::deleteAll();
+            Brand::deleteAll();
         }
 
         function testGetId()
@@ -58,6 +58,57 @@
 
             //Assert
             $this->assertEquals($name, $result);
+        }
+
+        function testSave()
+        {
+            //Arrange
+            $name = "Nike";
+            $test_brand = new Brand($name, $id=null);
+
+            //Act
+            $test_brand->save();
+
+            //Assert
+            $result = Brand::getAll();
+            $this->assertEquals($test_brand, $result[0]);
+        }
+
+        function testGetAll()
+        {
+            //Arrange
+            $name = "Nike";
+            $test_brand = new Brand($name, $id=null);
+            $test_brand->save();
+
+            $name2 = "Addidas";
+            $test_brand2 = new Brand($name2, $id2=null);
+            $test_brand2->save();
+
+            //Act
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            //Arrange
+            $name = "Nike";
+            $test_brand = new Brand($name, $id=null);
+            $test_brand->save();
+
+            $name2 = "Water the lawn";
+            $test_brand2 = new Brand($name2, $id2=null);
+            $test_brand2->save();
+
+            //Act
+            Brand::deleteAll();
+
+            //Assert
+            $result = Brand::getAll();
+            $this->assertEquals([], $result);
         }
     }
 
