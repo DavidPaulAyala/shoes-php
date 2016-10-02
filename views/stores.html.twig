@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Shoes</title>
+  </head>
+  <body>
+      <h1>Stores</h1>
+      {% if stores is not empty %}
+      <h4>Here are all your stores:</h4>
+          {% for store in stores %}
+              <h4>{{ store.getStoreName }}
+                <a href="/stores/{{ store.getId }}" class="btn btn-success btn-xs" role="button">view details</a></h4>
+          {% endfor %}
+          {% else %}
+              <h3>There are no stores on your list. Please enter a store below.</h3>
+          {% endif %}
+          <h5>Create a new store:</h5>
+
+        <form action="/stores" method="post">
+        <label class="label" for="name">New Store Name:</label><input id="name" name="name" type="text" required>
+        <button type="submit">Add store</button>
+        </form>
+
+        <form action="/delete_stores" method="post">
+          <button class="btn btn-danger" type="submit">Delete All Stores</button>
+          <br>
+          <br>
+          <a href='/' class="btn btn-primary" role="button">Home</a>
+        </form>
+  </body>
+</html>
