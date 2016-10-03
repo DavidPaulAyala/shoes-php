@@ -11,8 +11,14 @@ _This website allows for shoe stores and brands to be created and linked to each
 
 |Behavior|Input        |Output|
 |--------|:-----------:|-----:|
-||||
-||||
+|Saves Store Name|Foot Locker|Foot Locker|
+|Retrieves List of Stores Names|Foot Locker, Shoe City, DSW|Foot Locker, Shoe City, DSW|
+|Deletes entire List of Stores Names|Delete: Foot Locker, Shoe City, DSW|List Empty|
+|Finds one Store from a list of stores|Find DSW from list of Foot Locker, Shoe City, DSW|DSW|
+|Change the name of a store|Change Foot Locker to Lady Foot Locker|Lady Foot Locker|
+|Save Brand Name|Nike|Nike|
+|Assign Brands to Stores|Assign Nike to DSW|DSW Brands: Nike|
+|View Store's Brands|View Foot Locker's Brands|Nike, Addidas, Asics|
 
 
 ##SQL Commands
