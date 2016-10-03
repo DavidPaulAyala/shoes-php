@@ -1,0 +1,10 @@
+.jumbotron
+{
+    text-align: center;
+    background-color: transparent;
+}
+
+body {
+    background-image: url("../img/bkd.jpeg");
+    background-size: cover;
+}

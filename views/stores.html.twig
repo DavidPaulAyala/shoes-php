@@ -4,26 +4,28 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css">
     <title>Shoes</title>
-
-    {% if stores is not empty %}
-        <p>Here are all your stores:</p>
-        <ul>
-            {% for store in stores %}
-                <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <form action='/stores' method='post'>
-        <label for='name'>Store name</label>
-        <input id='name' name='name' type='text'>
-
-        <button type='submit'>Add store</button>
-    </form>
-    <form action='/delete_stores' method='post'>
-        <button type='submit'>Clear</button>
-    </form>
-
-    <p><a href='/'>Home</a></p>
-</body>
+    <div class="container">
+        {% if stores is not empty %}
+            <h2>Here are all your stores:</h2>
+            <ul>
+                {% for store in stores %}
+                    <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>Your stores are empty, please add one below.</h3>
+        {% endif %}
+        <form action='/stores' method='post' placeholder='store name'>
+            <label for='name'>Add a Store</label>
+            <input id='name' name='name' type='text'>
+            <button type='submit'>Add</button>
+        </form>
+        <br>
+        <form action='/delete_stores' method='post'>
+            <button type='submit' class="btn btn-danger">Delete All Stores</button>
+        </form>
+        <br>
+        <p><a href='/'>Home</a></p>
+    </div>
+  </body>
 </html>

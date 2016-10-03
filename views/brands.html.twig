@@ -4,26 +4,28 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css">
     <title>Shoes</title>
-
-    {% if brands is not empty %}
-        <p>Here are all your brands:</p>
-        <ul>
-            {% for brand in brands %}
-                <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <form action='/brands' method='post'>
-        <label for='name'>Brand name</label>
-        <input id='name' name='name' type='text'>
-
-        <button type='submit'>Add brand</button>
-    </form>
-    <form action='/delete_brands' method='post'>
-        <button type='submit'>Clear</button>
-    </form>
-
-    <p><a href='/'>Home</a></p>
-</body>
+    <div class="container">
+      {% if brands is not empty %}
+          <h2>Here are all your brands:</h2>
+          <ul>
+              {% for brand in brands %}
+                  <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+              {% endfor %}
+          </ul>
+      {% else %}
+          <h3>Your brands are empty, please add one below.</h3>
+      {% endif %}
+      <form action='/brands' method='post'>
+          <label for='name'>Add a Brand</label>
+          <input id='name' name='name' type='text' placeholder='brand name'>
+          <button type='submit'>Add</button>
+      </form>
+      <br>
+      <form action='/delete_brands' method='post'>
+          <button type='submit'class="btn btn-danger">Delete All Brands</button>
+      </form>
+      <br>
+      <p><a href='/'>Home</a></p>
+    </div>
+  </body>
 </html>
